@@ -1,0 +1,97 @@
+@charset "UTF-8";
+
+body {   
+   margin:0;
+   padding:0;
+}
+
+td.movietd {
+	border-bottom : 1px solid silver;
+	font-weight:bold;
+	font-size: 20px;
+	text-align: center;
+	vertical-align: middle;
+}
+
+
+td.scheduletd {
+	border-bottom : 1px solid silver;
+	text-align: center;
+	vertical-align: middle;
+}
+
+span.title {
+	font-size: 50px;
+	font-weight: bold;
+	
+}
+
+
+
+
+input {
+  width: 100px;
+  height: 32px;
+  font-size: 15px;
+  border: 0;
+  border-radius: 15px;
+  outline: none;
+  padding-left: 10px;
+  background-color: silver;
+  
+}
+
+input.seat {
+  width: 80px;
+  height: 40px;
+  font-size: 20px;
+  border: 0;
+  border-radius: 0px;
+  outline: none;
+  padding-left: 10px;
+  border : 1px solid silver;
+  background-color: rgb(203, 252, 244);
+  
+}
+
+span.seat-label {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+span.info {
+	font-size: 20px;
+	font-weight: bold;
+}
+
+
+input:hover{
+	background-color: green;
+	
+}
+
+
+td.schedule {
+	width: 1000px; 
+	height: 340px; 
+
+	border-bottom: 1px solid silver; 
+	font-size: 30px;
+	font-weight:bold;
+	text-align: center;
+	vertical-align: middle;
+}
+
+td.movie {
+	width: 1000px; 
+	height: 300px; 
+
+	text-align: center;
+}
+
+td.mname {
+	height: 40px;
+	text-align: center;
+	font-size: 30px;
+	font-weight: bold;
+}

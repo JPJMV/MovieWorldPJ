@@ -1,0 +1,226 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE mapper
+	PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+	
+<mapper namespace="com.JPJ.home.Dao.IDao">
+	
+	<!-- 회원 관리 SQL -->
+	<insert id="memberJoin">
+		INSERT INTO mw_member(mid, mpw, mname, memail, mbirth, mphone, mpoint
+		) VALUES(#{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}, 0) 
+	</insert>
+	
+	<select id="checkId" resultType="int">
+		SELECT COUNT(*) FROM mw_member WHERE mid=#{param1}
+	</select>
+	
+	<select id="checkIdAndPW" resultType="int">
+		SELECT COUNT(*) FROM mw_member WHERE mid=#{param1} AND mpw=#{param2}
+	</select>
+	
+	<select id="getMemberInfo" resultType="com.JPJ.home.Dto.MemberDto">
+		SELECT * FROM mw_member WHERE mid=#{param1}
+	</select>
+	
+	<select id="getallmember" resultType="com.JPJ.home.Dto.MemberDto">
+		SELECT * FROM mw_member
+	</select>
+	
+	<!-- 멤버 정보 수정 -->
+	<update id="memberModify">
+		UPDATE mw_member SET mpw=#{param2}, mbirth=#{param3}, mphone=#{param4}, memail=#{param5} WHERE mid=#{param1}
+	</update>
+	
+	
+	<!-- 로그인 멤버의 스케쥴 불러오기 -->
+	<select id="getMemberSchedule" resultType="com.JPJ.home.Dto.ScheduleDto">
+		select a.* from mw_schedule a join mw_reservation b on a.snum = b.snum where b.rid=#{param1} order by rdate asc
+	</select>
+	
+	
+	<!-- 로그인 멤버의 예매정보 불러오기 -->
+	<select id="getMemberReservation" resultType="com.JPJ.home.Dto.dto">
+		SELECT * FROM mw_reservation where rid=#{param1} order by rdate asc
+	</select>
+	
+	
+	
+	<!-- 인덱스 현재 상영작 -->
+    <select id="movierank" resultType="com.JPJ.home.Dto.MovieDto"> 
+        select * from mw_movie where mnum <![CDATA[ < ]]> 4
+    </select>
+   
+    <!-- 인덱스 개봉 예정작 -->
+    <select id="fmovierank" resultType="com.JPJ.home.Dto.MovieDto"> 
+        select * from mw_fmovie where mnum <![CDATA[ < ]]> 4
+    </select>
+   
+    <!-- 인덱스 스토어 -->
+    <select id="storerank" resultType="com.JPJ.home.Dto.StoreDto"> 
+        select * from mw_store where num <![CDATA[ < ]]> 4
+    </select>
+
+	
+	
+	
+	
+	<!-- 스케줄 날짜 가져오기 -->
+	<select id="getSchedule" resultType="com.JPJ.home.Dto.ScheduleDto">
+		SELECT DISTINCT sday FROM mw_schedule order by sday*1
+	</select>
+	
+	<!-- 당일 영화 스케쥴 가져오기 -->
+	<select id="dayMovieschedule" resultType="com.JPJ.home.Dto.ScheduleDto">
+		SELECT * FROM mw_schedule WHERE sday=#{param1} ORDER BY mname, sschedule asc
+	</select>
+	
+	<!-- 당일 영화 목록 이미지 가져오기 -->
+	<select id="Movielistimg" resultType="com.JPJ.home.Dto.MovieDto">
+		SELECT  mname, mimg FROM mw_movie ORDER BY mnum asc
+	</select>
+	
+		<!-- 예매 스케쥴 좌석 페이지로 가져오기 -->
+	<select id="rschedule" resultType="com.JPJ.home.Dto.ScheduleDto">
+		SELECT * FROM mw_schedule WHERE snum=#{param1}
+	</select>
+	
+
+		<!-- 예매 좌석 가져오기 -->
+	<select id="rscheduleseat" resultType="String">
+		SELECT rseat FROM mw_reservation WHERE snum=#{param1}
+	</select>
+	
+		<!-- 좌석 예매하기-->
+	<insert id="book">
+		INSERT INTO MW_RESERVATION(rnum, snum, rseat, rid) VALUES(mw_reservationseq.nextval, #{param1}, #{param2}, #{param3})
+	</insert>
+	
+		<!-- 예매시 포인트 추가-->
+	<update id="pointP">
+		UPDATE mw_member SET mpoint=mpoint+500 WHERE mid=#{param1}
+	</update>
+	
+		<!-- 예매시 포인트 삭제-->
+	<update id="pointD">
+		UPDATE mw_member SET mpoint=mpoint-500 WHERE mid=#{param1}
+	</update>
+	
+		<!-- 예매 삭제 -->
+	<delete id="reservDelete">
+		DELETE FROM mw_reservation WHERE rnum=#{param1}
+	</delete>
+	
+	
+	
+	
+	
+	<!-- 현재 상영작 리스트 가져오기 -->
+	<select id="getcmovielist" resultType="com.JPJ.home.Dto.MovieDto">
+		SELECT * FROM mw_movie
+	</select>
+
+	<!-- 현재 상영작 영화 가져오기 -->
+	<select id="getcmovie" resultType="com.JPJ.home.Dto.MovieDto">
+		SELECT * FROM mw_movie WHERE mnum=#{param1}
+	</select>
+	
+	
+	<!-- 개봉 예정작 리스트 가져오기 -->
+	<select id="getfmovielist" resultType="com.JPJ.home.Dto.MovieDto">
+		SELECT * FROM mw_fmovie
+	</select>
+
+	<!-- 개봉 예정작 영화 가져오기 -->
+	<select id="getfmovie" resultType="com.JPJ.home.Dto.MovieDto">
+		SELECT * FROM mw_fmovie WHERE mnum=#{param1}
+	</select>
+	
+	
+	
+	<!--                   스토어        상 품                     -->
+	
+	<!-- 스토어 팝콘 리스트 가져오기 -->
+	<select id="getPopcorn" resultType="com.JPJ.home.Dto.StoreDto">
+		SELECT * FROM mw_store WHERE type='Popcorn'
+	</select>
+	
+	<!-- 스토어 스낵 리스트 가져오기 -->
+	<select id="getSnacks" resultType="com.JPJ.home.Dto.StoreDto">
+		SELECT * FROM mw_store WHERE type='Snacks'
+	</select>
+	
+	<!-- 스토어 콤보 리스트 가져오기 -->
+	<select id="getcombo" resultType="com.JPJ.home.Dto.StoreDto">
+		SELECT * FROM mw_store WHERE type='combo'
+	</select>
+	
+	<!-- 스토어 음료 리스트 가져오기 -->
+	<select id="getBeverage" resultType="com.JPJ.home.Dto.StoreDto">
+		SELECT * FROM mw_store WHERE type='Beverage'
+	</select>
+	
+	<!-- 스토어 가져오기 -->
+    <select id="getstore" resultType="com.JPJ.home.Dto.StoreDto">
+      SELECT  * FROM mw_store where img=#{param1}
+    </select>
+	
+	
+	
+	
+	
+	<!-- 리뷰게시판 글 작성 -->
+	<insert id="writeReview">
+		INSERT INTO mw_review(rnum, rid, rname, rmovie, rgrade, rcontent, rtitle) VALUES(mw_reviewseq.nextval, #{param1}, #{param2}, #{param3}, #{param4}, #{param5}, #{param6}) 
+	</insert>
+	
+	<!-- 리뷰 게시판 총 글의 개수 가져오기 -->
+	<select id="ReviewAllCount" resultType="int">
+		SELECT COUNT(*) FROM mw_review
+	</select>
+	
+	<!-- 리뷰 리스트 페이징 -->
+
+	<select id="ReviewList" resultType="com.JPJ.home.Dto.ReviewDto">
+		SELECT * FROM
+			(SELECT A.*,Floor((ROWNUM-1)/#{amount}+1)PAGE,ROWNUM
+			FROM
+			(SELECT * FROM mw_review ORDER BY rnum DESC)A) 
+		WHERE PAGE= #{pageNum}
+	</select>
+	
+	<!-- 리뷰 보기 -->
+	
+	<select id="Review" resultType="com.JPJ.home.Dto.ReviewDto">
+		SELECT * FROM mw_review WHERE rnum=#{param1}
+	</select>	
+	
+	
+	
+	<!-- 현재 상영작 스케줄 날짜 가져오기 -->
+	<select id="MovieSchedule" resultType="com.JPJ.home.Dto.ScheduleDto">
+		SELECT * FROM mw_schedule where mname=#{param1} order by sday*1
+	</select>
+	
+	
+	<!-- 현재 상영작 스케줄 날짜 가져오기 -->
+	<select id="movieday" resultType="com.JPJ.home.Dto.ScheduleDto">
+		SELECT distinct sday FROM mw_schedule where mname=#{param1} order by sday*1
+	</select>
+	
+
+	<!-- 리뷰 수정 -->
+	<update id="ReviewModify">
+		UPDATE mw_review SET rgrade=#{param2}, rcontent=#{param3}, rtitle=#{param4} WHERE rnum=#{param1}
+	</update>
+
+	
+	<!-- 리뷰 글 삭제 -->
+	<delete id="reviewDelete">
+		DELETE FROM mw_review WHERE rnum=#{param1}
+	</delete>
+
+</mapper>
+	
+	

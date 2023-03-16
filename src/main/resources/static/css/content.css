@@ -1,0 +1,57 @@
+@charset "UTF-8";
+
+td.input_text01 {
+	font-family: malgun;
+	font-size: 20px;
+	font-weight: bold;
+	color: black;
+}
+
+input.input_box01 {
+	border: 1px solid #144272;
+	background-color: #ffffff;
+	width: 250px;
+	padding: 5px;
+	font-family: Arial;
+	font-size: 20px;
+	color: black;
+}
+
+input.button01 {
+	border: 2px solid #ffffff;
+	background-color: gray;
+	width: 180px; 
+	height: 40px;
+	font-family: malgun;
+	font-size: 20px;
+	color: #ffffff;
+	padding: 5px;
+}
+
+input.button01:hover {
+	border: 2px solid #ffffff;
+	background-color: #10283f;
+	width: 180px; 
+	height: 40px;
+	font-family: malgun;
+	font-size: 20px;
+	color: #ffffff;
+	padding: 5px;
+	cursor: pointer;
+}
+
+textarea.textarea01 {
+	border: 1px solid #144272;
+	background-color: #ffffff;
+	width: 250px;
+	padding: 5px;
+	font-family: Arial;
+	font-size: 20px;
+	color: #0f76f4;
+}
+
+
+
+
+
+

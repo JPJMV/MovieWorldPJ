@@ -1,0 +1,92 @@
+@charset "UTF-8";
+
+.mv1{
+	font-size: 40px;
+	font-weight: bold;
+}
+
+.mv2{
+	font-size: 25px;
+	font-weight: bold;
+}
+.mv3{
+	font-size: 20px;
+	font-weight: bold;
+}
+.p{
+	font-size: 16px; 
+
+}
+.hr{
+	background: #c0c0c0;
+	height: 2px;
+	border: 0;
+}
+td.head{
+	font-size: 20px;
+}
+
+input.button01 {
+	border-radius: 5px;
+	border: 2px solid #ffffff;
+	background-color: #808080;
+	width: 100px; 
+	height: 40px;
+	font-family: malgun;
+	font-size: 15x;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 5px;
+}
+
+input.button01:hover {
+	border: 2px solid #ffffff;
+	background-color: #c0c0c0;
+	width: 100px; 
+	height: 40px;
+	font-family: malgun;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 5px;
+	cursor: pointer;
+}
+input.button02 {
+	border-radius: 5px;
+	border: 2px solid #ffffff;
+	background-color: #808080;
+	width: 50px; 
+	height: 30px;
+	font-family: malgun;
+	font-size: 15x;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 5px;
+}
+
+input.button02:hover {
+	border: 2px solid #ffffff;
+	background-color: #c0c0c0;
+	width: 50px; 
+	height: 30px;
+	font-family: malgun;
+	font-size: 15px;
+	font-weight: bold;
+	color: #ffffff;
+	padding: 5px;
+	cursor: pointer;
+}
+td.text01{
+	font-size: 20px;
+	font-weight: bold;
+	text-align: center;
+}
+
+td.index_title {
+	font-size: 30px;
+	font-weight: bold;
+	text-align: center;
+	
+	
+	
+}

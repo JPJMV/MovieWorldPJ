@@ -1,0 +1,78 @@
+@charset "UTF-8";
+
+body {   
+   margin:0;
+   padding:0;
+}
+
+td.list_title {
+	font-weight:bold;
+	font-size:17px;
+	text-align : center;
+	border-bottom: 1px solid rgb(222, 222, 222);
+	border-top: 1px solid rgb(222, 222, 222);
+}
+
+td.board_title {
+	font-weight:bold;
+	font-size:17px;
+	border-bottom: 1px solid rgb(222, 222, 222);
+	border-top: 1px solid rgb(222, 222, 222);
+}
+
+td.write_title {
+	font-weight:bold;
+	font-size:17px;
+	border-bottom: 1px solid rgb(222, 222, 222);
+
+}
+
+select {
+
+	font-size:16px;
+}
+
+
+
+
+
+
+
+
+a{
+    text-decoration: none;
+    color : black;
+}
+
+a:hover {
+	color:black; 
+}
+
+
+/* 별점 css */
+
+fieldset{
+    display: inline-block; /* 하위 별점 이미지들이 있는 영역만 자리를 차지함.*/
+    direction: rtl; /* 이모지 순서 반전 */
+    border: 0; /* 필드셋 테두리 제거 */
+}
+fieldset legend{
+    text-align: left;
+}
+input[type=radio]{
+    display: none; /* 라디오박스 감춤 */
+}
+label{
+    font-size: 1.2em; /* 이모지 크기 */
+    color: transparent; /* 기존 이모지 컬러 제거 */
+    text-shadow: 0 0 0 rgb(192, 192, 192); /* 새 이모지 색상 부여 */
+}
+label:hover{
+    text-shadow: 0 0 0 rgb(255, 0, 0); /* 마우스 호버 */
+}
+label:hover ~ label{
+    text-shadow: 0 0 0 rgb(255, 0, 0); /* 마우스 호버 뒤에오는 이모지들 */
+}
+input[type=radio]:checked ~ label{
+    text-shadow: 0 0 0 rgb(255, 0, 0); /* 마우스 클릭 체크 */
+}
